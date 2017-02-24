@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+  
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>I go to Lane Tech..</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Floor 1</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">Floor Two</a></li>
+      </ul>
+    </div>
+    </div>
+
+    
+  <div data-role="main" class="ui-content">
+    <p>Lane Tech is a pretty big school, don't get lost!</p>
+    <img src="http://www.lanetech.org/img/lane-1.png" alt="lanetech.org" style="width:575px; height:500px;">
+    <a href="#pagetwo">Go to Floor 2</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Floor 1</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="header">
+    <h1>You go to Lane Tech..</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#pageone" data-icon="home">Floor 1</a></li>
+        <li><a href="#pagethree" class="ui-btn-active ui-state-persist" data-icon="arrow-r">Floor 3</a></li>
+      </ul>
+    </div>
+    
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>This is the 2nd Floor.</p>
+    <img src="http://www.lanetech.org/img/lane-2.png" alt="lanetech.org" style="width:505px; height 500px;">
+    <a href="#pagethree">Go to Floor 3</a>
+  </div>
+  
+  <div data-role="footer">
+    <h1>Floor 2</h1>
+  </div>
+  </div>
+
+<div data-role="page" id="pagethree">
+  <div data-role="header">
+    <h1>You go to Lane Tech..</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#pagetwo" data-icon="arrow-l">Floor 2</a></li>
+        <li><a href="#pagefour" class="ui-btn-active ui-state-persist" data-icon="arrow-r">Floor 4</a></li>
+      </ul>
+    </div>
+  </div>
+
+    
+  <div data-role="main" class="ui-content">
+    <p>This is the 3rd floor.</p>
+    <img src="http://www.lanetech.org/img/lane-3.png" alt="lanetech.org" style="width:575px; height:500px;">
+    <a href="#pagefour">Go to Floor 4</a>
+  </div>
+
+  <div data-role="footer">
+    <h1>Floor 3</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pagefour">
+  <div data-role="header">
+    <h1>You go to Lane Tech..</h1>
+     <div data-role="navbar">
+      <ul>
+        <li><a href="#pagethree" data-icon="arrow-l">Floor 3</a></li>
+        <li><a href="#pageone" class="ui-btn-active ui-state-persist" data-icon="home">Floor 1</a></li>
+      </ul>
+    </div>
+    
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>This is the 4th Floor.</p>
+    <img src="http://www.lanetech.org/img/lane-4.png" alt="lanetech.org" style="width:505px; height 500px;">
+    <a href="#pageone">Go to Floor 1</a>
+  </div>
+  <div data-role="footer">
+    <h1>Floor 4</h1>
+  </div>
+
+  </div>
+  </body>
+</html>
+ 
+
