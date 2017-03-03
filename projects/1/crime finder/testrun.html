@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style>
+#results { 
+    background-color: lightblue;
+    color: black;
+     font-style: oblique;
+     
+     margin-bottom: 10px;
+    border: 5px solid red;
+
+
+
+}
+</style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Crime Finder</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+                   
+                    
+                    <h2 class="section-heading">Find The Crime Today</h2>
+                    <p> Chose a district below to find a set of crimes that were reported to that district</p>
+    
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    
+                    
+                </div>
+
+        
+        
+            <select id= "disNum">
+    <option value = "#placeholder"> Choose a Route</option>
+     <option value="49">49 - Western</option>
+  <option value="X49">X49 - Western Express</option>
+  <option value="52">52 - Kedzie/California</option>
+  <option value="77">77 - Belmont</option>
+  <option value="152">152 - Addison</option>
+    </select>
+    
+        <button type="button" id="btnSearch" disabled="disabled">Search!</button>
+    </div>
+    
+    <!-- a div to store the results -->
+    <div id="results">
+        
+        
+        
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        /*
+            This script retrieves towed vehicle data for the entered plate
+        */
+        
+       
+        $(function () {    // don't execute code until DOM is ready
+            /*
+                most code should wait for the button click event,
+                but creating and setting some variables *can* be 
+                done when the page loads
+            */
+
+            // api endpoint for the towed vehicle data
+            var baseURL = 'https://polar-garden-75406.herokuapp.com/apiPassThru.php';
+            
+            // optional filters we're appending: 
+            var url = 'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3';
+            
+            var filters = '&format=json&rt='
+            
+            var og = url + filters
+            console.log(og)
+            
+            
+            // start with button disabled
+            $("#btnSearch").attr("disabled", false);
+            
+            // enable button only if text in input box
+            $("#disNum").keyup(function(){   // change event doesn't work, so using keyup 
+                if ($("disNum").val() == "#placeholder") {   // if value is empty
+                    $("#btnSearch").attr("disabled", true)  // set disabled
+                }
+                else {
+                    $("#btnSearch").attr("disabled", false)
+                }
+            })
+            
+            
+            
+         
+           
+            // we want to get the data and display on button click
+            $("#btnSearch").on("click", function() {
+                
+                // each time we search, we need to clear the results
+                $("#results").html("");
+                
+               
+                //   and append to url in getJSON call
+                var dNum = $("#disNum").val();
+           
+                var urlWithParams = og + dNum + "&rtid=8417";
+                console.log(urlWithParams);  // verify that it's being created correctly
+           
+                // jQuery command to retrieve json data
+                
+                $.getJSON(urlWithParams)       // append the plateNum
+                    .done (function (data) {    // execute this function when getJSON is done
+                        
+                        console.log(data);
+                        
+                        var numRecords = data.length;  // the length of the array
+                        
+                        // notify of number of records
+                        var message = 
+                            "<p>Records found: "
+                            + numRecords
+                            + "</p>"
+                        
+                        $("#results").append(message);
+                        
+                        
+                        // only loop records if count > 0
+                        if (numRecords > 0) {
+                            // loop through the records
+                            $.each (data , 
+                                function (index, value) {
+                                    // append content to the body 
+                                    var html = "<h2>" 
+                                        + value.primary_type+ " "
+                                        + "</h2>"
+                                        + "<p>" 
+                                        + "Date:  "
+                                        + value.date 
+                                        + "<br>"
+                                        + " Adress: "
+                                        + value.block
+                                        + "<br> Description:  "
+                                        + value.description
+                                        + "<br>District: ";
+                                        
+                                        
+                                   
+                                   
+                                    $("#results").append(html);
+                                    
+                            
+                                
+                                }  // end of function
+                            
+                            ); // end of each loop                            
+                        
+                        }   // end of if statement
+
+                    })  // end of getJSON
+            
+            })  // end of button click event
+        
+        }) // end of jQuery wrapper
+        
+        
+    </script>
+
+</body>
+</html>
+
+                </div>
+            </div>
+
+        </div>
+    
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+  
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+
+
+    
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

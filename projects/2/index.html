@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseXML demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+  <style>
+  Body{ border-style: outset;
+    border-color:blue;
+    padding: 10px;
+ 
+  }
+  
+  </style>
+  <div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3&rt=49&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "DAJwE49icruvCzfyGQcetvYL3",
+                      "format":"json",
+                      "stpid":"8417,"}
+            }).done (function (data) {
+              console.log(data);
+              $("html").append("<div id=four>")
+              $("body").append("<h1> Route 49: Northbound <br> (Front of Popeyes)</h1>");
+              
+               $("#four").css("border-style, dotted")
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                
+                  $("body").append( "<br>"
+                  + "<p>"
+                  + "Route #" + v.rt 
+                  +" -" 
+                  +  v.rtdir 
+                  + "<br>" 
+                  + " Time: " 
+                  + v.prdctdn 
+                  +" Minutes"  
+                 + "</p>"
+              
+                  
+                  
+                  );
+                
+              })
+
+            });
+        });
+           
+    //http://www.transitchicago.com/assets/1/bus_stop_lists/52.html
+  // LANE STADIUM http://www.ctabustracker.com/bustime/api/v1/getpredictions?key=jJquksw2V7SHdUaYceGSAhZhP&rt=52&stpid=17787
+  
+</script>
+     <script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3&rt=49&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "DAJwE49icruvCzfyGQcetvYL3",
+                      "format":"json",
+                      "stpid":"8195,"}
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1> Route 49: Southbound <br> (Front of School)</h1>");
+               
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                
+                  $("body").append( "<br>"
+                  + "<p>"
+                  + "Route #" + v.rt 
+                  +" -" 
+                  +  v.rtdir 
+                  + "<br>" 
+                  + " Time: " 
+                  + v.prdctdn 
+                  +" Minutes"  
+                 + "</p>"
+              
+                  
+                  
+                  );
+                
+              })
+
+            });
+        });
+            
+    //http://www.transitchicago.com/assets/1/bus_stop_lists/52.html
+  
+</script>
+<script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3&rt=52&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "DAJwE49icruvCzfyGQcetvYL3",
+                      "format":"json",
+                      "stpid":"17787,"}
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1> Route 52: Southbound <br> (Next to Turf Field)</h1>");
+               
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                
+                  $("body").append( "<br>"
+                  + "<p>"
+                  + "Route #" + v.rt 
+                  +" -" 
+                  +  v.rtdir 
+                  + "<br>" 
+                  + " Time: " 
+                  + v.prdctdn 
+                  +" Minutes"  
+                 + "</p>"
+              
+                  
+                  
+                  );
+                
+              })
+
+            });
+        });
+            
+    //http://www.transitchicago.com/assets/1/bus_stop_lists/52.html
+  
+</script>
+<script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3&rt=152&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "DAJwE49icruvCzfyGQcetvYL3",
+                      "format":"json",
+                      "stpid":"12571,"}
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1> Route 152: Westbound <br> (Towards Blue Line)</h1>");
+               
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                
+                  $("body").append( "<br>"
+                  + "<p>"
+                  + "Route #" + v.rt 
+                  +" -" 
+                  +  v.rtdir 
+                  + "<br>" 
+                  + " Time: " 
+                  + v.prdctdn 
+                  +" Minutes"  
+                 + "</p>"
+              
+                  
+                  
+                  );
+                
+              })
+
+            });
+        });
+            
+    //http://www.transitchicago.com/assets/1/bus_stop_lists/52.html
+  
+</script>
+<script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=DAJwE49icruvCzfyGQcetvYL3&rt=152&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "DAJwE49icruvCzfyGQcetvYL3",
+                      "format":"json",
+                      "stpid":"12525,"}
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1> Route 152: Eastbound <br> (Towards Brown Line)</h1>");
+               
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                
+                  $("body").append( "<br>"
+                  + "<p>"
+                  + "Route #" + v.rt 
+                  +" -" 
+                  +  v.rtdir 
+                  + "<br>" 
+                  + " Time: " 
+                  + v.prdctdn 
+                  +" Minutes"  
+                 + "</p>"
+              
+                  
+                  
+                  );
+                
+              })
+
+            });
+        });
+            
+    //http://www.transitchicago.com/assets/1/bus_stop_lists/52.html
+  
+</script>
+  </div>
+
+ 
+</body>
+</html>
