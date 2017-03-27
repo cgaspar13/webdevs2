@@ -91,6 +91,17 @@
         console.log("No it didn't. This happened: ", err)
       });
   }
+  $('.mdl-navigation__link').click(function(){
+            
+//  the drawer
+            $('.mdl-layout__drawer').toggleClass('is-visible');
+
+// the transparent overlay that shows when you open the drawer
+$('.mdl-layout__obfuscator').toggleClass('is-visible');   
+            
+ });
+
+
 </script>
   </body>
 </html>
