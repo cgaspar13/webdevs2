@@ -1,0 +1,15 @@
+{
+  "short_name": "Mom's Reminders",
+  "name": "Mom's Reminders",
+  "icons": [
+    {
+      "src":"images/mom.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html?utm_source=homescreen",
+  "background_color": "#000",
+  "Theme_color": "#536878",
+  "display": "standalone"
+}
