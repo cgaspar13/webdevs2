@@ -151,25 +151,17 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        /*
-            This script retrieves towed vehicle data for the entered plate
-        */
+       
         
        
-        $(function () {    // don't execute code until DOM is ready
-            /*
-                most code should wait for the button click event,
-                but creating and setting some variables *can* be 
-                done when the page loads
-            */
-
-            // api endpoint for the towed vehicle data
+        $(function () {    
+            
             var baseURL = 'https://data.cityofchicago.org/resource/6zsd-86xi.json';
             
-            // optional filters we're appending: 
+            
             var filters = '?district=';
             
-            // the url; we'll append the plate number in button click
+     
             var url = baseURL + filters;   
             
             console.log (url);
