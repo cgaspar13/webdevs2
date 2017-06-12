@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <style>
+   
+            canvas {
+              border:3px solid blue;
+              background-color:white;
+              background-image: url();
+            }
+            #player {
+              display:none;
+            }
+          
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="600" height="600">
+    <img id="tentacion" src="images/ye.png"> 
+    <img id="cherry" src="images/yeezy.png">
+    <img id="ghost" src="images/red.png">
+    </canvas>
+    
+    <script>
+      var livesRemaining = 3;
+      var score = 0;
+      var level = 1;
+      var paused = false;
+      /*
+      
+        main animation loop
+      */
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      
+      var image = document.getElementById("tentacion");
+      var pacmanX = 20
+      var pacmanY = 100
+      
+      var image1 = document.getElementById("cherry")
+      var cherryX = 200
+      var cherryY = Math.floor(Math.random() * 500)
+      
+      var image2 = document.getElementById("ghost")
+      var ghostX = 200
+      var ghostY = Math.floor(Math.random() * 500)
+      
+      function animate() {
+        // clear canvas
+          ctx.clearRect(0,0,canvas.width,canvas.height); 
+        
+        // draw background
+        
+        // draw player
+          ctx.drawImage(image, pacmanX, pacmanY, 100, 100);
+        // draw harm
+          ctx.drawImage(image2, ghostX, ghostY, 120, 60);
+          ghostX = ghostX - 1.5
+        // check for and handle edge condition
+          if (ghostX < 0)
+          {
+            ghostX = canvas.width;
+            ghostY = Math.floor(Math.random() * 560);
+          }
+        // draw benefit
+           ctx.drawImage(image1, cherryX, cherryY, 120, 60);
+           cherryX = cherryX - 1.5
+        // check for and handle edge condition
+          if (cherryX < 0 )
+          {
+            cherryX = canvas.width;
+            cherryY = Math.floor(Math.random() * 560);
+          }   
+        // check for harm collision
+          if (pacmanX < ghostX + 35 && pacmanX + 35 > ghostX && pacmanY < ghostY + 35 && pacmanY + 35 > ghostY) 
+          {
+            livesRemaining = livesRemaining - 1
+            ghostX = canvas.width;
+            ghostY = Math.floor(Math.random() * 560);
+          } 
+          if (livesRemaining <= 0)
+          {
+            paused = true;  
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.font = "40px Arial";
+            ctx.fillStyle = "white";
+            ctx.fillText("YOU LOSE", 200, 300) 
+          }  
+        // check for benefit collision
+          if (pacmanX < cherryX + 35 && pacmanX + 35 > cherryX && pacmanY < cherryY + 35 && pacmanY + 35 > cherryY) 
+          {
+            score = score + 100
+            cherryX = canvas.width;
+            cherryY = Math.floor(Math.random() * 560); 
+          }
+        // draw text (lives and score)
+          ctx.font = "15px Arial";
+          ctx.fillStyle = "green";
+          ctx.fillText("Lives: " + livesRemaining, 10, 30);
+          
+          ctx.font = "15px Arial";
+          ctx.fillStyle = "green";
+          ctx.fillText("Score: " + score, 10, 60);
+          
+        //  if the game has not been paused, 
+          if (!paused) {
+            requestAnimationFrame(animate);
+          }
+        
+      }
+          animate();
+          
+      //  event handler for moving player
+      //    use onKeyPress event, and change the player.y value based on the up/down keys
+       document.addEventListener("keydown", move )
+        function move (e) {
+         
+          if (e.keyCode == 40){
+            pacmanY = pacmanY + 10 
+          }
+          if (e.keyCode == 38){
+            pacmanY = pacmanY - 10 
+          }
+           
+        };
+      
+      
+      
+      
+    </script>
+    
+    
+  </body>
+</html>
